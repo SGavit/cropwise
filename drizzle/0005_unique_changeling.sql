@@ -1,0 +1,1 @@
+ALTER TABLE `farmProfiles` MODIFY COLUMN `cropAreaAllocations` text;

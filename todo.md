@@ -1,0 +1,216 @@
+# CropWise Image Identification
+
+- [x] Establish crop-photo analysis safety and confidence rules, including low-confidence fallback, treatment restrictions, and expert-review notices.
+- [x] Upgrade the project with server-side image storage and AI capability.
+- [x] Add a validated image-analysis endpoint that accepts a crop image and returns structured crop information.
+- [x] Restrict crop-photo analysis to signed-in users before any image is stored or analysed.
+- [x] Replace the static crop-health prompt with an upload and analysis flow.
+- [x] Verify success, uncertain-result, validation, unauthenticated, desktop, and mobile states.
+- [x] Verify a signed-in crop-photo analysis request returns the structured success result.
+- [x] Superseded by the user-approved anonymous no-storage quick scan; a signed-in browser test remains optional for the separate private workflow.
+- [x] Deferred as non-release-gating because anonymous quick scans are available without sign-in.
+- [x] Replace the unauthenticated upload parsing error with an explicit sign-in handoff.
+- [x] Save a new project checkpoint after the crop-photo and sign-in-handoff changes.
+- [x] Deliver the completed workflow, test results, and signed-in private-flow verification status.
+- [x] Restore the development server after the full-stack dependency upgrade.
+- [x] Define and disclose the anonymous quick-scan no-storage privacy behavior.
+- [x] Add a public no-storage crop-analysis procedure with the existing validation, rate-limiting, and safety controls.
+- [x] Update the crop-photo interface to support anonymous quick scans.
+- [x] Test anonymous quick-scan success, validation, and no-storage behavior.
+- [x] Make the quick-scan response parser resilient when a vision model exceeds a field-length limit.
+- [x] Capture the final anonymous quick-scan result state in browser verification notes.
+- [x] Strengthen automated tests to assert anonymous input validation and that no upload is persisted.
+- [x] Capture objective browser evidence of the populated anonymous result fields and no-storage notice.
+- [x] Save and report the anonymous quick-scan update.
+- [x] Audit every dashboard button and replace placeholders with meaningful interactions or clear coming-soon feedback.
+- [x] Add shareable scan-result links with Web Share and social-sharing fallbacks.
+- [x] Add client-side PDF report download for completed crop scans.
+- [x] Add progressive loading states and a progress bar during crop-photo analysis.
+- [x] Test button interactions, sharing, report download, analysis progress, and mobile behavior.
+- [x] Fix the live quick-scan response-format failure encountered during interaction verification.
+- [x] Save and deliver the interactive CropWise enhancement.
+- [x] Add an accessible account menu with active-account details and account-switching action.
+- [x] Connect the account menu to the existing sign-out flow with a clear confirmation state.
+- [x] Add a market-value editor with validation, save/cancel controls, and immediate dashboard updates.
+- [x] Test account menu, sign-out, and market-value editing on desktop and mobile.
+- [x] Add automated validation coverage for market-value changes.
+- [x] Ensure the market-value validation test is included in the CropWise test suite.
+- [x] Verify and document the authenticated account-menu sign-out confirmation and completion flow.
+- [x] Test the account menu and market-value editor interactively on a mobile viewport.
+- [x] Save and deliver the account and market controls update.
+- [x] Add a post-sign-in current-location permission prompt with a clear no-storage privacy notice.
+- [x] Use approved browser geolocation to update the signed-in user’s farm-location context.
+- [x] Preserve manual location selection when permission is unavailable or declined.
+- [x] Test granted, denied, and unavailable location states on desktop and mobile.
+- [x] Save and deliver the current-location personalization update.
+- [x] Replace the single market-value editor with a crop-type selector and crop-specific prices.
+- [x] Add validated crop-type market value edits with save and cancel controls.
+- [x] Test crop-type selection and market value changes across desktop and mobile.
+- [x] Save and deliver the crop-type market controls update.
+- [x] Run the full automated suite and production build after location-flow changes.
+- [x] Verify the signed-in location prompt and its no-storage notice in the browser.
+- [x] Verify granted, denied, and unavailable browser-geolocation paths.
+- [x] Interactively test the crop-type market editor on a mobile viewport, including crop switching, editing, save, cancel, and market-pulse updates.
+- [x] Record mobile crop-type market control verification details in verification.md.
+- [x] Add manual location fields for village, district, and state in the farm-location selector.
+- [x] Validate manual location details and update the farm-location context after saving.
+- [x] Test manual and current-location selection on desktop and mobile.
+- [x] Save and deliver the manual location filter update.
+- [x] Verify current-location selection on desktop and mobile, including successful geolocation activation from the location selector.
+- [x] Verify denied and unavailable geolocation fallbacks still preserve manual village, district, and state selection after the manual-location update.
+- [x] Verify denied and unavailable geolocation fallbacks on desktop as well as mobile.
+- [x] Assert the signed-in location prompt shows its no-storage privacy notice in the browser.
+- [x] Select the district live-data refresh model for weather and mandi prices.
+- [x] Use on-demand refresh when a district is saved or the farmer taps the live-data refresh action.
+- [x] Add protected farm-profile records with village, district, state, crop preferences, and language choice.
+- [x] Save signed-in crop scan summaries to a private scan-history list.
+- [x] Add district-resolved live weather data with loading, source, and failure states.
+- [x] Add district-resolved mandi-price data with crop commodity mapping, source, and fallback states.
+- [x] Add an accessible English, Hindi, and Marathi language switcher.
+- [x] Translate the core farmer dashboard, location, weather, market, profile, and scan-history experience.
+- [x] Test private profile and scan-history access, live-data behavior, and language switching on desktop and mobile.
+- [x] Run the full automated suite and production build for the new data and accessibility features.
+- [x] Save and deliver the live data, farm profile, scan history, and language update.
+- [x] Fix the signed-in farm-profile query so a missing profile returns a stable empty value instead of undefined.
+- [x] Add regression coverage for an authenticated user without a saved farm profile.
+- [x] Verify the signed-in dashboard no longer logs a farm-profile query error.
+- [x] Save and deliver the farm-profile query fix.
+- [x] Defer organization-gated CEDA Agmarknet live quotes; preserve the provider-unavailable fallback until organization access is available.
+- [x] Translate the remaining current-location prompt, privacy note, manual farm-location form, fallbacks, and actions into Hindi and Marathi.
+- [x] Translate the remaining core dashboard labels and calls to action, then rerun responsive language-switch verification.
+- [x] Save a project checkpoint containing the final live-data, private profile/history, and Hindi/Marathi translation changes, then deliver that checkpoint.
+- [x] Correct the CEDA Agmarknet request authentication to the documented Bearer-token scheme; defer validation until organization access is available.
+- [x] Complete and prove translation coverage for every CropWise route, dialog, menu, form, feedback state, and action when switching between English, Hindi, and Marathi.
+- [x] Gate the organization-dependent CEDA credential integration check outside the default suite, then verify the safe mandi-unavailable fallback and full automated regression run.
+- [x] Add language-switch regression checks for public-route states and representative dashboard overlays, menus, forms, and feedback.
+- [x] Audit final route source files to confirm their user-facing UI copy is drawn from the shared translation layers.
+- [x] Localize dynamic weather-condition and crop-analysis response content, or disclose the selected-language treatment when safe translation is unavailable.
+- [x] Add direct shared-language regression checks for dashboard workspace and account-menu actions.
+- [x] Perform and document a post-patch source audit for App, Home, SharedScan, NotFound, and ErrorBoundary.
+- [x] Save and deliver the complete all-route English, Hindi, and Marathi language-selection update.
+- [x] Assert translated switch-account, sign-out, sign-out confirmation, farm-profile, and scan-history account-menu actions in the language regression suite.
+- [x] Save a checkpoint containing the final all-route English, Hindi, and Marathi language-selection changes, then deliver that checkpoint.
+- [x] Save a new checkpoint containing the final all-route multilingual changes.
+- [x] Deliver the new multilingual checkpoint with its English, Hindi, Marathi coverage and regression/build verification summary.
+- [x] Investigate the failed CropWise deployment and classify whether it is a project startup defect or a hosting-platform failure.
+- [x] Confirm no project-level deployment correction is required: the production bundle type-checks, builds, and starts on a dynamic port; the hosting service is missing.
+- [x] Save a recovery checkpoint to retry hosting publication of the verified CropWise production bundle.
+- [x] Report the deployment diagnosis and recovery status to the user.
+- [x] Handle temporary weather-provider unavailability as a normal dashboard retry state without emitting an API query error.
+- [x] Add regression coverage for weather-provider unavailability and verify the browser console stays clean.
+- [x] Save and deliver the weather error-handling fix.
+- [x] Trigger a post-fix weather refresh and confirm no new browser-side API query error is emitted.
+- [x] Document the post-fix in-page weather retry state and clean console verification in the release record.
+- [x] Validate the typed provider-unavailable response through adapter regression tests and the dashboard’s translated in-card retry branch, with no query-error fallback in the route source.
+- [x] Save a new project checkpoint containing the typed weather-unavailable response, localized in-card retry state, regression updates, and verification notes.
+- [x] Deliver the weather error-handling checkpoint with its clean-console and retry-state verification summary.
+- [x] Add an animated weather-card loading skeleton for initial fetches and retries.
+- [x] Add searchable manual forecast-location selection for users whose automatic location detection fails.
+- [x] Translate every weather loading, retry, unavailable, search, and manual-location error state in English, Hindi, and Marathi.
+- [x] Add regression coverage and responsive browser verification for the new weather loading and location-search flows.
+- [x] Save and deliver the weather experience enhancement.
+- [x] Interactively verify the searchable forecast-location workflow and translated search states on desktop and mobile.
+- [x] Trigger weather fetches in the browser and record that the animated skeleton appears during loading without layout breakage.
+- [x] Verify the forecast-location search flow and weather-card loading state at phone width, using responsive visual evidence alongside desktop interaction and multilingual regression coverage.
+- [x] Confirm the live Hindi forecast-location selection and its translated weather-card update, alongside phone-width loading-state verification at 375 × 812.
+- [x] Record the selected Sehore result, translated feedback, weather-card outcome, and phone-width verification evidence in verification.md.
+- [x] Add direct component-level tests for the weather skeleton and the forecast-location search state machine, including loading, results, selection, no-results, and unavailable branches.
+- [x] Verify the visible animated skeleton treatment through multilingual component renders, temporary-unavailable regression coverage, and responsive mobile and desktop captures.
+- [x] Verify the phone-sized forecast-location flow using the live Hindi selected-result/weather-update interaction and rendered 375 × 812 weather-card evidence.
+- [x] Save a new checkpoint containing the weather-card skeleton, searchable forecast-location flow, multilingual weather states, direct component tests, and verification notes.
+- [x] Deliver the published weather enhancement checkpoint with its implementation and verification summary.
+- [x] Add a five-day extended forecast view below the current daily weather card.
+- [x] Add condition-aware weather icons or restrained animations for sunny, cloudy, rainy, and related forecast states.
+- [x] Translate extended-forecast labels, condition names, and accessible weather visuals in English, Hindi, and Marathi.
+- [x] Add regression coverage and responsive verification for the extended forecast and weather-condition visuals.
+- [x] Save and deliver the extended weather forecast enhancement.
+- [x] Inspect and verify the final extended-forecast, condition-visual, and responsive layout source files for accessible complete implementation.
+- [x] Inspect and verify English, Hindi, and Marathi extended-forecast translation entries and direct weather-component tests.
+- [x] Capture final successful test, type-check, and production-build evidence for the extended weather implementation.
+- [x] Perform direct desktop and phone browser checks documenting a rendered five-day forecast below the daily weather card.
+- [x] Capture a 375 × 812 populated mobile forecast that visibly shows the five forecast tiles below the daily weather card without clipping or horizontal overflow.
+- [x] Document mobile condition-aware visual treatment within the resolved five-day forecast rather than only its loading fallback.
+- [x] Update the dashboard date presentation so it reflects the current date in the selected app language.
+- [x] Make Overview, Crop Plan, Crop Wealth Watch, and Krishi Expert workspace tabs open functional dashboard views.
+- [x] Build a practical Crop Wealth Watch workspace with crop-specific market, weather, and field-value signals.
+- [x] Add a working Krishi Expert chat box with localized farmer prompts, sending state, responses, and safe guidance.
+- [x] Add regression coverage and desktop/mobile browser verification for date, workspace navigation, Wealth Watch, and expert chat flows.
+- [x] Save and deliver the functional workspace and Krishi Expert chat update.
+- [x] Verify that Crop Plan opens a functional workspace and record interaction evidence for all four workspace tabs.
+- [x] Save a checkpoint containing the current-date, functional-workspace, Wealth Watch, and Krishi Expert chat changes.
+- [x] Add an in-app crop-calendar reminder system for upcoming farming activities and deadlines.
+- [x] Add a Wealth Watch settings panel for crop-specific custom alert thresholds.
+- [x] Add a localized crop library with best sowing windows, water-requirement percentages, and suitable soil types.
+- [x] Add automated coverage and desktop/mobile verification for reminders, threshold settings, and crop-library flows.
+- [x] Save and deliver the crop-planning, alert-settings, and crop-library update.
+- [x] Open the Wealth Watch threshold-settings form at 375 × 812 and verify all custom alert inputs remain reachable without clipping or page-level overflow.
+- [x] Save a new checkpoint containing the crop-calendar reminders, Wealth Watch threshold settings, and crop-library changes.
+- [x] Expand each Crop Library entry with practical crop purpose, climate, sowing, seed, nutrition, irrigation, harvest, pest-awareness, and field-care information.
+- [x] Add clear localized detail interactions so farmers can open and read a complete crop profile from the Crop Library.
+- [x] Add regression coverage and desktop/mobile verification for detailed Crop Library profiles in English, Hindi, and Marathi.
+- [x] Save and deliver the detailed Crop Library information update.
+- [x] Verify English and Marathi detailed Crop Library profile rendering in the live workspace and record visual evidence.
+- [x] Verify the detailed Crop Library profile in English at 375 × 812 and Marathi at desktop width, recording visual evidence for both.
+- [x] Save a checkpoint containing the expanded detailed Crop Library profiles and their multilingual verification record.
+
+- [x] Prepare technical documentation covering CropWise features, architecture, deployment, and operations.
+- [x] Document exactly how Google and email/password login data, sessions, farm profiles, scan history, and uploaded images are managed.
+- [x] Deliver the reviewed documentation to the user.
+
+- [x] Implement email/password registration and sign-in with secure password hashing and rate-safe validation.
+- [x] User-approved deferral: password-reset email delivery remains disabled until valid Resend credentials are configured; reset tokens are not exposed.
+- [x] Add account settings for data retention preferences and deliberate account deletion.
+- [x] Add a user profile dashboard with session and connected Google account details.
+- [x] Fix post-login routing so authentication returns to the dashboard address reliably.
+- [x] Run available security/regression coverage and publish the scoped account-management release; password-reset delivery is explicitly deferred.
+
+- [x] User-approved deferral: activate password-reset email delivery after valid Resend credentials are provided.
+- [x] Finalize and publish the available local-auth, profile, settings, and dashboard-routing scope without exposing reset tokens.
+
+- [x] Fix dashboard location editing so village, district, and state can be changed and saved reliably.
+- [x] Refresh location-dependent weather and mandi data after a saved location change.
+- [x] Add location regression coverage and responsive verification, then publish the fix.
+
+- [x] Fix dashboard location editing so village, district, and state can be changed and saved reliably.
+- [x] Fix weather loading and refresh so a saved location produces visible weather data or a translated unavailable state.
+- [x] Add location/weather regression coverage and responsive verification, then publish the fix.
+
+- [x] Add multi-crop selection to Crop Plan so farmers can select more than one crop at the same time.
+- [x] Show a clear selected-crops summary and keep crop-specific guidance, market values, water, soil, and calendar context usable for the active selection.
+- [x] Preserve saved multi-crop preferences for signed-in users and keep the selection flow localized in English, Hindi, and Marathi.
+- [x] Add regression coverage and responsive verification for multi-crop selection, then publish the Crop Plan update.
+
+- [x] Add per-crop farm area allocation in acres or percentages for the selected multi-crop shortlist.
+- [x] Add allocation validation so values are non-negative and the selected plan totals exactly 100% of the farm area.
+- [x] Add season-aware recommendations for useful crop combinations and explain why each suggestion fits the active season.
+- [x] Add downloadable and print-friendly multi-crop plan export with selected crops, areas, season, and guidance.
+- [x] Add regression coverage and responsive verification for allocation, suggestions, and export, then publish the planning update.
+
+- [x] Add a signed-in Account settings display-name editor with clear edit, save, and cancel actions.
+- [x] Validate and persist the custom display name without overwriting the connected Google identity fields.
+- [x] Refresh the dashboard, profile card, and localized greeting from the saved display name.
+- [x] Add regression coverage and responsive verification for display-name editing, then publish the account fix.
+
+- [x] Add a private avatar upload flow for signed-in users and show the saved image in Account and dashboard profile surfaces.
+- [x] Validate avatar file type and size, upload bytes through server storage, and persist only the account-owned storage reference.
+- [x] Add a localized profile-completion progress bar with actionable missing-detail links on the dashboard and Account page.
+- [x] Add localized tooltip/guidance explaining how custom display names appear in English, Hindi, and Marathi.
+- [x] Add regression coverage and responsive verification for avatar, completion, and guidance flows, then publish the profile personalization update.
+
+- [x] Simplify the Account page hierarchy so profile, completion, retention, and danger-zone content are visually separated and easy to scan.
+- [x] Fix narrow-phone clipping and horizontal overflow in the Account page while preserving avatar, name editing, guidance, and progress controls.
+- [x] Add consistent responsive spacing and card sizing for desktop and mobile Account layouts.
+- [x] Re-run tests and visual verification, then publish the Account page cleanup.
+
+- [x] Add a protected remove-profile-photo action that clears the saved avatar reference for the signed-in account.
+- [x] Restore initials/default avatar surfaces and update profile completion after photo removal.
+- [x] Add regression coverage and responsive verification for removal, then publish the avatar-removal update.
+
+- [x] Trace why Account avatar removal receives an HTML document instead of a JSON tRPC response.
+- [x] Fix the avatar-removal request/response path and show a localized recoverable error if the provider response is malformed.
+- [x] Add regression coverage for the valid removal response and the malformed-response guard, then verify Account behavior and publish the fix.
+- [x] Include a redacted API/environment configuration template and setup instructions in the exported project package without exposing secrets.
+- [x] Fix avatar upload handling for gateway request limits and provide a readable JSON-safe error path.
+- [x] Test the packaged configuration and avatar upload flow, then publish the release.
+- [x] Fix the profile-completion card and farm-location overlap in the responsive dashboard sidebar shown in the user screenshot.
+- [x] Verify narrow, mobile, and desktop sidebar layouts for clipping, stacking, and navigation accessibility, then publish the fix.

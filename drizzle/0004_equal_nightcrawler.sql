@@ -1,0 +1,1 @@
+ALTER TABLE `farmProfiles` ADD `cropAreaAllocations` text;

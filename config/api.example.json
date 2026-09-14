@@ -1,0 +1,9 @@
+{
+  "app": { "appId": "${APP_ID}" },
+  "database": { "url": "${DATABASE_URL}" },
+  "session": { "jwtSecret": "${JWT_SECRET}" },
+  "ai": { "baseUrl": "${AI_API_URL}", "apiKey": "${AI_API_KEY}", "model": "${AI_MODEL}" },
+  "maps": { "apiKey": "${GOOGLE_MAPS_API_KEY}" },
+  "storage": { "mode": "${STORAGE_MODE}", "bucket": "${AWS_S3_BUCKET}", "region": "${AWS_REGION}" },
+  "email": { "apiKey": "${RESEND_API_KEY}", "from": "${RESEND_FROM_EMAIL}" }
+}
