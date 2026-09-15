@@ -214,10 +214,14 @@ const normalizeToolChoice = (
   return toolChoice;
 };
 
-const resolveApiUrl = () =>
-  ENV.aiApiUrl && ENV.aiApiUrl.trim().length > 0
-    ? `${ENV.aiApiUrl.replace(/\/$/, "")}/v1/chat/completions`
-    : "https://api.openai.com/v1/chat/completions";
+const resolveApiUrl = () => {
+  const baseUrl = ENV.aiApiUrl?.trim().replace(/\/+$/, "");
+  if (!baseUrl) return "https://api.openai.com/v1/chat/completions";
+  if (baseUrl.endsWith("/v1") || baseUrl.endsWith("/openai")) {
+    return `${baseUrl}/chat/completions`;
+  }
+  return `${baseUrl}/v1/chat/completions`;
+};
 
 const assertApiKey = () => {
   if (!ENV.aiApiKey) {
@@ -354,8 +358,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     responseFormat,
     response_format,
     model,
-    thinking,
-    reasoning,
+   thinking,
     maxTokens,
     max_tokens,
     maxCompletionTokens,
@@ -393,10 +396,6 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   if (thinking) {
     payload.thinking = thinking;
   }
-  if (reasoning) {
-    payload.reasoning = reasoning;
-  }
-
   const normalizedResponseFormat = normalizeResponseFormat({
     responseFormat,
     response_format,
@@ -442,9 +441,12 @@ export type ModelsResponse = {
 export async function listLLMModels(): Promise<ModelsResponse> {
   assertApiKey();
 
-  const url = ENV.aiApiUrl && ENV.aiApiUrl.trim().length > 0
-    ? `${ENV.aiApiUrl.replace(/\/$/, "")}/v1/models`
-    : "https://api.openai.com/v1/models";
+  const baseUrl = ENV.aiApiUrl?.trim().replace(/\/+$/, "");
+  const url = !baseUrl
+    ? "https://api.openai.com/v1/models"
+    : baseUrl.endsWith("/v1") || baseUrl.endsWith("/openai")
+      ? `${baseUrl}/models`
+      : `${baseUrl}/v1/models`;
 
   const response = await fetchWithBackoff(url, {
     headers: { authorization: `Bearer ${ENV.aiApiKey}` },

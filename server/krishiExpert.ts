@@ -46,7 +46,6 @@ export async function answerKrishiExpert(input: z.infer<typeof krishiExpertInput
   ].join(" ");
 
   const response = await invokeLLM({
-    model: "gpt-5-mini",
     maxCompletionTokens: 700,
     reasoning: { effort: "low" },
     messages: [

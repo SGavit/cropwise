@@ -33,7 +33,7 @@ describe("Krishi Expert", () => {
 
     expect(result.answer).toBe("पेरणीपूर्वी मातीचा ओलावा तपासा. स्थानिक सल्ल्यानुसार बीज निवडा.");
     const request = vi.mocked(invokeLLM).mock.calls[0]?.[0];
-    expect(request?.model).toBe("gpt-5-mini");
+    expect(request?.model).toBeUndefined();
     expect(request?.messages[0]?.content).toContain("Write in Marathi using Devanagari script");
     expect(request?.messages[0]?.content).toContain("Do not diagnose a disease with certainty");
     expect(request?.messages[1]?.content).toContain("Selected crop: Maize");

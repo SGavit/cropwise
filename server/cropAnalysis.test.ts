@@ -5,13 +5,13 @@ vi.mock("./_core/llm", () => ({
 }));
 
 vi.mock("./storage", () => ({
-  storageGetSignedUrl: vi.fn(),
   storagePut: vi.fn(),
 }));
 
 import { invokeLLM } from "./_core/llm";
 import { storagePut } from "./storage";
 import {
+  analyzeCropPhoto,
   analyzeCropPhotoWithoutStorage,
   allowAnonymousQuickScan,
   CropPhotoValidationError,
@@ -101,5 +101,21 @@ describe("decodeCropPhoto", () => {
     expect(result.imageUrl).toBeUndefined();
     expect(result.privacyNotice).toContain("does not save");
     expect(vi.mocked(invokeLLM).mock.calls[0]?.[0].messages[0]?.content).toContain("Marathi in Devanagari script");
+  });
+
+  it("sends the original image data to the provider before saving a private scan", async () => {
+    const dataUrl = `data:image/jpeg;base64,${Buffer.from("crop-photo").toString("base64")}`;
+    vi.mocked(invokeLLM).mockResolvedValue({
+      choices: [{ message: { content: JSON.stringify(validCropVisionResponse) } }],
+    } as never);
+    vi.mocked(storagePut).mockResolvedValue({ key: "crop-analysis/test.jpg", url: "/storage/crop-analysis/test.jpg" });
+
+    await analyzeCropPhoto({ dataUrl, fileName: "crop.jpg", mimeType: "image/jpeg", language: "en" });
+
+    expect(vi.mocked(invokeLLM).mock.calls[0]?.[0].messages[1]?.content).toEqual([
+      { type: "text", text: expect.any(String) },
+      { type: "image_url", image_url: { url: dataUrl, detail: "high" } },
+    ]);
+    expect(storagePut).toHaveBeenCalled();
   });
 });

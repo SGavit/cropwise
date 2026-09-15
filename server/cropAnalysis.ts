@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { invokeLLM } from "./_core/llm";
-import { storageGetSignedUrl, storagePut } from "./storage";
+import { storagePut } from "./storage";
 
 export const MAX_CROP_IMAGE_BYTES = 5 * 1024 * 1024;
 
@@ -156,7 +156,6 @@ async function runCropVision(imageUrl: string, language: "en" | "hi" | "mr") {
       ? "Marathi in Devanagari script"
       : "plain English";
   const response = await invokeLLM({
-    model: "gpt-5-mini",
     maxCompletionTokens: 1800,
     reasoning: { effort: "low" },
     messages: [
@@ -184,14 +183,15 @@ async function runCropVision(imageUrl: string, language: "en" | "hi" | "mr") {
 }
 
 export async function analyzeCropPhoto(input: z.infer<typeof cropPhotoInputSchema>) {
-  const imageBytes = decodeCropPhoto(input.dataUrl, input.mimeType);
+  decodeCropPhoto(input.dataUrl, input.mimeType);
+  const parsed = await runCropVision(input.dataUrl, input.language);
+  const imageBytes = Buffer.from(input.dataUrl.split(",")[1], "base64");
   const extension = extensionForMimeType(input.mimeType);
   const { key, url: imageUrl } = await storagePut(
     `crop-analysis/${crypto.randomUUID()}.${extension}`,
     imageBytes,
     input.mimeType,
   );
-  const parsed = await runCropVision(await storageGetSignedUrl(key), input.language);
   return {
     ...parsed,
     imageUrl,
